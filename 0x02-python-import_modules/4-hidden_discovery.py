@@ -2,4 +2,5 @@
 import hidden_4
 
 for name in dir(hidden_4):
-    print(name)
+    if '__' not in name:
+        print(name)
