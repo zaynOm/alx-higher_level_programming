@@ -6,7 +6,7 @@ int is_palindrome(listint_t **head)
 	listint_t *node = (*head);
 	int *nums, i = 0, len = 0;
 
-	if (!node || !node->next)
+	if (!*head || !(*head)->next)
 		return (1);
 
 	nums = malloc(sizeof(int));
