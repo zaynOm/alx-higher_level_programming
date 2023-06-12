@@ -22,7 +22,10 @@ int is_palindrome(listint_t **head)
 	while (i < len)
 	{
 		if (nums[i++] != nums[(len--) - 1])
+		{
+			free(nums);
 			return (0);
+		}
 	}
 	
 	free(nums);
