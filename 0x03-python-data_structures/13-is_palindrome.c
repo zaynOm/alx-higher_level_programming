@@ -16,6 +16,7 @@ int is_palindrome(listint_t **head)
 		nums[len] = node->n;
 		node = node->next;
 		len++;
+		nums = realloc(nums, sizeof(int) * len + 1);
 	}
 
 	while (i < len)
