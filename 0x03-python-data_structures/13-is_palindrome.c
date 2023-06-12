@@ -18,7 +18,7 @@ int is_palindrome(listint_t **head)
 		len++;
 		nums = realloc(nums, sizeof(int) * len + 1);
 	}
-
+	nums[len] = NULL;
 	while (i < len)
 	{
 		if (nums[i++] != nums[(len--) - 1])
