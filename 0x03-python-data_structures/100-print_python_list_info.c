@@ -3,12 +3,12 @@
 
 void print_python_list_info(PyObject *p)
 {
-	PyListObject *lobj = (PyListObject *) p;
-	long i = 0, size = Py_SIZE(p);
+	PyListObject *obj = (PyListObject *) p;
+	long long i = 0, size;
 
-	printf("[*] Size of the Python List = %ld\n", size);
-	printf("[*] Allocated = %ld\n", lobj->allocated);
-
+	size = (long long) Py_SIZE(p);
+	printf("[*] Size of the Python List = %lld\n", size);
+	printf("[*] Allocated = %lld\n", (long long) obj->allocated);
 	while (i < size)
-		printf("Element %d: %s\n", i, lobj->ob_item[i++]->tp_name);
+		printf("Element %lld: %s\n", i, Py_TYPE(obj->ob_item[i++])->tp_name);
 }
