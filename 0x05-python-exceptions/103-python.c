@@ -12,7 +12,7 @@ void print_python_bytes(PyObject *p)
 	char *byte;
 
 	printf("[.] bytes object info\n");
-	if (!PyBytes_Check(p))
+	if (!PyBytes_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
@@ -38,7 +38,7 @@ void print_python_float(PyObject *p)
 
 	printf("[.] float object info\n");
 
-	if (!PyFloat_Check(p))
+	if (!PyFloat_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
