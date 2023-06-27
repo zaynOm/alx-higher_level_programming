@@ -70,7 +70,7 @@ void print_python_list(PyObject *p)
 	printf("[*] Allocated = %lld\n", ((PyListObject *)p)->allocated));
 	while (++i < size)
 	{
-		obj = PyList_GET_Item(p, i);
+		obj = PyList_GET_ITEM(p, i);
 		printf("Element %zd: %s\n", i, obj->ob_type->tp_name);
 		if (PyFloat_Check(obj))
 			print_python_float(obj);
