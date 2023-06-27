@@ -46,7 +46,7 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	buf = PyOS_double_to_string(pyfloat->ob_fval, 'r', 0,
-			      Py_DTSF_ADD_DOT_0, NULL);
+			Py_DTSF_ADD_DOT_0, NULL);
 	printf("  value: %s\n", buf);
 	free(buf);
 }
@@ -67,7 +67,7 @@ void print_python_list(PyObject *p)
 		printf("  [ERROR] Invalid List Object\n");
 		return;
 	}
-    
+
 	size = (long long) ((PyVarObject *) lst)->ob_size;
 	printf("[*] Size of the Python List = %lld\n", size);
 	printf("[*] Allocated = %lld\n", (long long) lst->allocated);
