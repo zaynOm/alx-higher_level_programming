@@ -3,36 +3,42 @@ Tests for the 0-add_integer.py script
 
 >>> add_integer = __import__('0-add_integer').add_integer
 
->>> print(add_integer(1, 2))
+>>> add_integer(1, 2)
 3
->>> print(add_integer(100, -2))
+>>> add_integer(100, -2)
 98
->>> print(add_integer(10))
+>>> add_integer(10)
 108
->>> print(add_integer(3.14, 8))
+>>> add_integer(3.14, 8)
 11
->>> print(add_integer(3.14))
+>>> add_integer(3.14)
 101
->>> print(add_integer(3.14, -3.14))
+>>> add_integer(3.14, -3.14)
 0
->>> print(add_integer(0))
+>>> add_integer(0)
 98
->>> print(add_integer(0, 0))
+>>> add_integer(0, 0)
 0
->>> print(add_integer(-100, 0))
+>>> add_integer(-100, 0)
 -100
->>> print(add_integer(None))
+>>> add_integer(None)
 Traceback (most recent call last):
 TypeError: a must be an integer
->>> print(add_integer(10, None))
+>>> add_integer(10, None)
 Traceback (most recent call last):
 TypeError: b must be an integer
->>> print(add_integer(None, None))
+>>> add_integer(None, None)
 Traceback (most recent call last):
 TypeError: a must be an integer
->>> print(add_integer("hi", 10))
+>>> add_integer("hi", 10)
 Traceback (most recent call last):
 TypeError: a must be an integer
->>> print(add_integer(30, [10, 20]))
+>>> add_integer(30, [10, 20])
 Traceback (most recent call last):
 TypeError: b must be an integer
+>>> add_integer(float("nan"), 0)
+98
+>>> add_integer(12, float("nan"))
+110
+>>> add_integer(float("nan"), float("nan"))
+196
