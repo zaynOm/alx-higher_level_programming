@@ -4,10 +4,10 @@
 
 class MyInt(int):
     """Integer but with (== and !=) operations reversed"""
-    def __eq__(num1, num2):
+    def __eq__(self, num2):
         """Override == with !="""
-        return num1 != num2
+        return self.real != num2
 
-    def __ne__(num1, num2):
+    def __ne__(self, num2):
         """Override != with =="""
-        return num1 == num2
+        return self.real == num2
