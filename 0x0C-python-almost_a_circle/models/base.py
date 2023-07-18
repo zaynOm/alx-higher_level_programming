@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 "Defines a Base class"
 import json
+import turtle
 
 
 class Base:
@@ -117,4 +118,16 @@ class Base:
             turt.hideturtle()
 
         turt.color("#b5e3d8")
-        for sq in list_squ
+        for sq in list_squares:
+            turt.showturtle()
+            turt.up()
+            turt.goto(sq.x, sq.y)
+            turt.down()
+            for i in range(2):
+                turt.forward(sq.width)
+                turt.left(90)
+                turt.forward(sq.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turtle.exitonclick()
