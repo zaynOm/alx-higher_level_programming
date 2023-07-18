@@ -64,3 +64,57 @@ class Base:
             return list
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save to file csv"""
+        filename = cls.__name__ + ".csv"
+        list = []
+        if list_objs is not None:
+            for i in list_objs:
+                list.append(i.to_dictionary())
+        list = cls.to_json_string(list)
+        with open(filename, "w") as f:
+            f.write(list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """load from file csv"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, "r") as f:
+                list = cls.from_json_string(f.read())
+            for i, j in enumerate(list):
+                list[i] = cls.create(**list[i])
+            return list
+        except FileNotFoundError:
+            return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draw Rectangles and Squares using the turtle module.
+
+        Args:
+            list_rectangles (list): A list of Rectangle objects to draw.
+            list_squares (list): A list of Square objects to draw.
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#b7312c")
+        turt.pensize(3)
+        turt.shape("turtle")
+
+        turt.color("#ffffff")
+        for rect in list_rectangles:
+            turt.showturtle()
+            turt.up()
+            turt.goto(rect.x, rect.y)
+            turt.down()
+            for i in range(2):
+                turt.forward(rect.width)
+                turt.left(90)
+                turt.forward(rect.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turt.color("#b5e3d8")
+        for sq in list_squ
