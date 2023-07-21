@@ -486,7 +486,7 @@ class TestSquare_update_args(unittest.TestCase):
     def test_update_args_invalid_size_type(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s.update(89, "invalid")
+            s.update(89, "not int")
 
     def test_update_args_size_zero(self):
         s = Square(10, 10, 10, 10)
@@ -501,7 +501,7 @@ class TestSquare_update_args(unittest.TestCase):
     def test_update_args_invalid_x(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s.update(89, 1, "invalid")
+            s.update(89, 1, "not int")
 
     def test_update_args_x_negative(self):
         s = Square(10, 10, 10, 10)
@@ -511,7 +511,7 @@ class TestSquare_update_args(unittest.TestCase):
     def test_update_args_invalid_y(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            s.update(89, 1, 2, "invalid")
+            s.update(89, 1, 2, "not int")
 
     def test_update_args_y_negative(self):
         s = Square(10, 10, 10, 10)
@@ -521,17 +521,17 @@ class TestSquare_update_args(unittest.TestCase):
     def test_update_args_size_before_x(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s.update(89, "invalid", "invalid")
+            s.update(89, "not int", "not int")
 
     def test_update_args_size_before_y(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s.update(89, "invalid", 2, "invalid")
+            s.update(89, "not int", 2, "not int")
 
     def test_update_args_x_before_y(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s.update(89, 1, "invalid", "invalid")
+            s.update(89, 1, "not int", "not int")
 
 
 class TestSquare_update_kwargs(unittest.TestCase):
@@ -588,7 +588,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_size(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            s.update(size="invalid")
+            s.update(size="not int")
 
     def test_update_kwargs_size_zero(self):
         s = Square(10, 10, 10, 10)
@@ -603,7 +603,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_x(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            s.update(x="invalid")
+            s.update(x="not int")
 
     def test_update_kwargs_x_negative(self):
         s = Square(10, 10, 10, 10)
@@ -613,7 +613,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_y(self):
         s = Square(10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            s.update(y="invalid")
+            s.update(y="not int")
 
     def test_update_kwargs_y_negative(self):
         s = Square(10, 10, 10, 10)
@@ -654,6 +654,7 @@ class TestSquare_to_dictionary(unittest.TestCase):
         s = Square(10, 10, 10, 10)
         with self.assertRaises(TypeError):
             s.to_dictionary(1)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -119,7 +119,7 @@ class TestRectangle_width(unittest.TestCase):
 
     def test_str_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle("invalid", 2)
+            Rectangle("not int", 2)
 
     def test_float_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
@@ -195,7 +195,7 @@ class TestRectangle_height(unittest.TestCase):
 
     def test_str_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, "invalid")
+            Rectangle(1, "not int")
 
     def test_float_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
@@ -267,7 +267,7 @@ class TestRectangle_x(unittest.TestCase):
 
     def test_str_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, "invalid", 2)
+            Rectangle(1, 2, "not int", 2)
 
     def test_float_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
@@ -339,7 +339,7 @@ class TestRectangle_y(unittest.TestCase):
 
     def test_str_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 1, "invalid")
+            Rectangle(1, 2, 1, "not int")
 
     def test_float_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
@@ -594,7 +594,7 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_invalid_width_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r.update(89, "invalid")
+            r.update(89, "not int")
 
     def test_update_args_width_zero(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -609,7 +609,7 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_invalid_height_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r.update(89, 2, "invalid")
+            r.update(89, 2, "not int")
 
     def test_update_args_height_zero(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -624,7 +624,7 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_invalid_x_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r.update(89, 2, 3, "invalid")
+            r.update(89, 2, 3, "not int")
 
     def test_update_args_x_negative(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -634,7 +634,7 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_invalid_y(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            r.update(89, 2, 3, 4, "invalid")
+            r.update(89, 2, 3, 4, "not int")
 
     def test_update_args_y_negative(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -644,32 +644,32 @@ class TestRectangle_update_args(unittest.TestCase):
     def test_update_args_width_before_height(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r.update(89, "invalid", "invalid")
+            r.update(89, "not int", "not int")
 
     def test_update_args_width_before_x(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r.update(89, "invalid", 1, "invalid")
+            r.update(89, "not int", 1, "not int")
 
     def test_update_args_width_before_y(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r.update(89, "invalid", 1, 2, "invalid")
+            r.update(89, "not int", 1, 2, "not int")
 
     def test_update_args_height_before_x(self):
         r = Rectangle(10, 10, 10, 10, 10)
-        with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r.update(89, 1, "invalid", "invalid")
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r.update(89, 1, "not int", "not int")
 
     def test_update_args_height_before_y(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r.update(89, 1, "invalid", 1, "invalid")
+            r.update(89, 1, "not int", 1, "not int")
 
     def test_update_args_x_before_y(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r.update(89, 1, 2, "invalid", "invalid")
+            r.update(89, 1, 2, "not int", "not int")
 
 
 class TestRectangle_update_kwargs(unittest.TestCase):
@@ -721,7 +721,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_width_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            r.update(width="invalid")
+            r.update(width="not int")
 
     def test_update_kwargs_width_zero(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -736,7 +736,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_height_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            r.update(height="invalid")
+            r.update(height="not int")
 
     def test_update_kwargs_height_zero(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -751,7 +751,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_kwargs_inavlid_x_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            r.update(x="invalid")
+            r.update(x="not int")
 
     def test_update_kwargs_x_negative(self):
         r = Rectangle(10, 10, 10, 10, 10)
@@ -761,7 +761,7 @@ class TestRectangle_update_kwargs(unittest.TestCase):
     def test_update_kwargs_invalid_y_type(self):
         r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            r.update(y="invalid")
+            r.update(y="not int")
 
     def test_update_kwargs_y_negative(self):
         r = Rectangle(10, 10, 10, 10, 10)
