@@ -100,7 +100,7 @@ class Rectangle(Base):
             kwargs (dict): Dict of arguments (key-worded argument)
         """
         keys = ['id', 'width', 'height', 'x', 'y']
-        for i in range(len(args)):
+        for i in range(min(len(args), 5)):
             exec(f'self.{keys[i]} = {args[i]}')
 
         if len(args) == 0:
