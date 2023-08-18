@@ -1,5 +1,5 @@
 -- lists all shows contained in the database hbtn_0d_tvshows
-SELECT c.title, s.genre_id
-FROM tv_shows c
-LEFT JOIN tv_show_genres s ON c.id = s.show_id
-ORDER BY c.title, s.genre_id ASC;
+SELECT s.title, sg.genre_id
+FROM tv_shows s
+LEFT JOIN tv_show_genres sg ON s.id = sg.show_id
+ORDER BY s.title, sg.genre_id;
