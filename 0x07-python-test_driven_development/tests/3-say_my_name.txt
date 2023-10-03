@@ -1,0 +1,40 @@
+===================================
+Test cases for say_my_name function
+===================================
+
+>>> smn = __import__('3-say_my_name').say_my_name
+
+Normal cases
+------------
+
+	>>> smn('Ahmed', 'Taha')
+	My name is Ahmed Taha
+
+	>>> smn('Ahmed')
+	My name is Ahmed 
+
+Non string cases
+----------------
+
+	>>> smn(14)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+	>>> smn(None, 3)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+	>>> smn('Ahmed', 66)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+
+	>>> smn('Ahmed', None)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+
+More then 2 args cases
+----------------------
+
+	>>> smn('Ahmed', 'Taha', 'No') #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	TypeError: say_my_name() takes from 1 to 2 positional arguments but ...
