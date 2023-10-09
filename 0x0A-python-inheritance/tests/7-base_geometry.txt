@@ -15,6 +15,10 @@ area method tests:
 	>>> bg.area(99)
 	Traceback (most recent call last):
 	TypeError: area() takes 1 positional argument but 2 were given
+	
+	>>> bg.area(8, 3)
+	Traceback (most recent call last):
+    	TypeError: area() takes 1 positional argument but 3 were given
 
 Normal integer_validator cases:
 
@@ -32,6 +36,14 @@ Non int cases:
 	TypeError: name must be an integer
 
 	>>> bg.integer_validator("kids", ['kid1', 'kid2'])
+	Traceback (most recent call last):
+	TypeError: kids must be an integer
+
+	>>> bg.integer_validator("kids", (5,))
+	Traceback (most recent call last):
+	TypeError: kids must be an integer
+
+	>>> bg.integer_validator("kids", {2, 7})
 	Traceback (most recent call last):
 	TypeError: kids must be an integer
 
