@@ -26,5 +26,5 @@ class Student:
             dict: attributes contained in `attrs`; or all attributes.
         """
         if attrs:
-            return {k: v for k, v in self.__dict__.items() if k in attrs}
+            return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
