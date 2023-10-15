@@ -91,3 +91,14 @@ class Rectangle(Base):
         "String representation of the instance."
         return (f'[{self.__class__.__name__}] ({self.id}) {self.x}/{self.y} - '
                 f'{self.width}/{self.height}')
+
+    def update(self, *args):
+        """Update the instance attributes.
+
+        Args:
+            args (tuple): Tuple of arguments (no-keyword argument)
+            kwargs (dict): Dict of arguments (key-worded argument)
+        """
+        keys = ['id', 'width', 'height', 'x', 'y']
+        for i in range(min(len(args), 5)):
+            exec(f'self.{keys[i]} = {args[i]}')
