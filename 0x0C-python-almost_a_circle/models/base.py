@@ -75,3 +75,17 @@ class Base:
         new = cls(1) if cls.__name__ == 'Square' else cls(1, 1)
         new.update(**dictionary)
         return new
+
+    @classmethod
+    def load_from_file(cls):
+        """Loads JSON from file than creats new instances.
+
+        Returns:
+            list: List of instances if the file exists, otherwise empty list.
+        """
+        try:
+            with open(cls.__name__ + '.json', 'r', encoding='utf-8') as f:
+                list_dict = cls.from_json_string(f.read())
+                return [cls.create(**d) for d in list_dict]
+        except FileNotFoundError:
+            return []
