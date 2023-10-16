@@ -92,7 +92,7 @@ class Rectangle(Base):
         return (f'[{self.__class__.__name__}] ({self.id}) {self.x}/{self.y} - '
                 f'{self.width}/{self.height}')
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Update the instance attributes.
 
         Args:
@@ -102,3 +102,7 @@ class Rectangle(Base):
         keys = ['id', 'width', 'height', 'x', 'y']
         for i in range(min(len(args), 5)):
             exec(f'self.{keys[i]} = {args[i]}')
+
+        if len(args) == 0:
+            for k, v in kwargs.items():
+                exec(f'self.{k} = {v}')
