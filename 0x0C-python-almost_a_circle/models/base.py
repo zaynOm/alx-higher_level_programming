@@ -47,3 +47,17 @@ class Base:
         l_dict = [e.to_dictionary() for e in list_objs] if list_objs else None
         with open(cls.__name__ + '.json', 'w', encoding='utf-8') as f:
             f.write(cls.to_json_string(l_dict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """JSON string to dictionary.
+
+        Args:
+            json_string (str): string representing a list of dictionaries.
+
+        Returns:
+            list: list of the JSON string representation json_string.
+        """
+        if json_string:
+            return json.loads(json_string)
+        return []
