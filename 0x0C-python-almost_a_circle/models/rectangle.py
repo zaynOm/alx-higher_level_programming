@@ -88,8 +88,8 @@ class Rectangle(Base):
         print('\n'.join([' ' * self.x + '#' * self.width] * self.height))
 
     def __str__(self):
-        "String representation of the instance."
-        return (f'[{self.__class__.__name__}] ({self.id}) {self.x}/{self.y} - '
+        "String representation of a rectangle instance."
+        return (f'[Rectangle] ({self.id}) {self.x}/{self.y} - '
                 f'{self.width}/{self.height}')
 
     def update(self, *args, **kwargs):
@@ -106,3 +106,8 @@ class Rectangle(Base):
         if len(args) == 0:
             for k, v in kwargs.items():
                 exec(f'self.{k} = {v}')
+
+    def to_dictionary(self):
+        "Returns the dictionary representation of a Rectangle"
+        return {'x': self.x, 'y': self.y, 'id': self.id,
+                'height': self.height, 'width': self.width}
