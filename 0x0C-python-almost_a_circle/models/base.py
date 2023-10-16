@@ -61,3 +61,17 @@ class Base:
         if json_string:
             return json.loads(json_string)
         return []
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Creates an instance with all attributes already set.
+
+        Args:
+            dictionary (dict): Dict of arguments (key-worded argument).
+
+        Returns:
+            obj: The newly created  Rectangle/Square instance .
+        """
+        new = cls(1) if cls.__name__ == 'Square' else cls(1, 1)
+        new.update(**dictionary)
+        return new
