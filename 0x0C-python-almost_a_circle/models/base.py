@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 "Module for Base class"
 import json
+import csv
 
 
 class Base:
@@ -89,3 +90,43 @@ class Base:
                 return [cls.create(**d) for d in list_dict]
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """writes the CSV string representation of list_objs to a file.
+
+        Args:
+            list_objs (list of objects): list of instances that inherits
+                from Base.
+        """
+        with open(cls.__name__ + '.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            for e in list_objs:
+                if cls.__name__ == 'Rectangle':
+                    writer.writerow([e.id, e.width, e.height, e.x, e.y])
+                elif cls.__name__ == 'Square':
+                    writer.writerow([e.id, e.size, e.x, e.y])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads CSV from file than creats new instances.
+
+        Returns:
+            list: List of instances if the file exists, otherwise empty list.
+        """
+        objs = []
+        try:
+            with open(cls.__name__ + '.csv', 'r') as f:
+                reader = csv.reader(f)
+                for e in reader:
+                    if cls.__name__ == 'Rectangle':
+                        my_dict = {'id': int(e[0]), 'width': int(e[1]),
+                                   'height': int(e[2]), 'x': int(e[3]),
+                                   'y': int(e[4])}
+                    elif cls.__name__ == 'Square':
+                        my_dict = {'id': int(e[0]), 'width': int(e[1]),
+                                   'x': int(e[2]), 'y': int(e[3])}
+                    objs.append(cls.create(**my_dict))
+        except Exception:
+            pass
+        return objs
