@@ -101,11 +101,11 @@ class Rectangle(Base):
         """
         keys = ['id', 'width', 'height', 'x', 'y']
         for i in range(min(len(args), 5)):
-            exec(f'self.{keys[i]} = {args[i]}')
+            setattr(self, keys[i], args[i])
 
         if len(args) == 0:
             for k, v in kwargs.items():
-                exec(f'self.{k} = {v}')
+                setattr(self, k, v)
 
     def to_dictionary(self):
         "Returns the dictionary representation of a Rectangle"
