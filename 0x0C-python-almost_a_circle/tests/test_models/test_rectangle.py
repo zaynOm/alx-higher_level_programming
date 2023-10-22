@@ -383,6 +383,11 @@ class TestRectangle_update(unittest.TestCase):
         self.r.update(width=13, id=12, x=15, y=16, height=14)
         self.assertEqual(str(self.r), '[Rectangle] (12) 15/16 - 13/14')
 
+    def test_update_kwargs_with_dict(self):
+        d = {'width': 13, 'id': 12, 'x': 15, 'y': 16, 'height': 14}
+        self.r.update(**d)
+        self.assertEqual(str(self.r), '[Rectangle] (12) 15/16 - 13/14')
+
     def test_invalid_kwargs_width(self):
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             self.r.update(id=1, width="invalid")
