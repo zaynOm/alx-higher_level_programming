@@ -2,6 +2,7 @@
 "Module for Base class"
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -130,3 +131,30 @@ class Base:
         except Exception:
             pass
         return objs
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Opens a window and draws all the Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): List of Rectangles to draw.
+            list_squares (list): List of Squares to draw.
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor('#45474B')
+        turt.pensize(4)
+
+        for shape in list_rectangles + list_squares:
+            turt.penup()
+            turt.goto(shape.x, shape.y)
+            turt.pendown()
+            color = '#F4CE14' if shape.__class__.__name__ == 'Square' \
+                    else '#6D9886'
+            turt.color(color)
+            for _ in range(2):
+                turt.forward(shape.width)
+                turt.left(90)
+                turt.forward(shape.height)
+                turt.left(90)
+
+        turtle.exitonclick()
