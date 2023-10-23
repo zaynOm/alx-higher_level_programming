@@ -100,6 +100,9 @@ class Base:
             list_objs (list of objects): list of instances that inherits
                 from Base.
         """
+        if list_objs is None:
+            list_objs = ''
+        
         with open(cls.__name__ + '.csv', 'w', newline='') as f:
             writer = csv.writer(f)
             for e in list_objs:
