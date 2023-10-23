@@ -224,7 +224,42 @@ class TestBase_load_from_file(unittest.TestCase):
 
 class TestBase_save_to_file_csv(unittest.TestCase):
     "Unittests for `save_to_file_csv` method"
-    pass
+    
+    def test_None_arg(self):
+        Rectangle(1, 2).save_to_file_csv(None)
+        with open('Rectangle.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '')
+
+    def test_empty_arg_list(self):
+        Rectangle(1, 2).save_to_file_csv([])
+        with open('Rectangle.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '')
+
+    def test_save_one_rectangle(self):
+        r = Rectangle(1, 2, 3, 4, 5)
+        Rectangle.save_to_file_csv([r])
+        with open('Rectangle.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '5,1,2,3,4\n')
+
+    def test_save_one_square(self):
+        s = Square(1, 2, 3, 4)
+        Square.save_to_file_csv([s])
+        with open('Square.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '4,1,2,3\n')
+
+    def test_save_two_rectangles(self):
+        r1 = Rectangle(1, 2, 3, 4, 5)
+        r2 = Rectangle(6, 7, 8, 9, 10)
+        Rectangle.save_to_file_csv([r1, r2])
+        with open('Rectangle.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '5,1,2,3,4\n10,6,7,8,9\n')
+
+    def test_save_two_squares(self):
+        r1 = Square(1, 2, 3, 4)
+        r2 = Square(6, 7, 8, 9)
+        Square.save_to_file_csv([r1, r2])
+        with open('Square.csv', 'r', encoding='utf-8') as f:
+            self.assertEqual(f.read(), '4,1,2,3\n9,6,7,8\n')
 
 
 class TestBase_load_from_file_csv(unittest.TestCase):
