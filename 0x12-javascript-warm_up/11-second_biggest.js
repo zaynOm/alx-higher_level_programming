@@ -2,7 +2,5 @@
 
 const { argv } = require('process');
 
-let nums = argv.slice(2);
-nums.sort().reverse();
-if (nums.length < 2) nums = [0, 0];
-console.log(nums[1]);
+if (argv.length > 3) console.log(argv.slice(2).sort().reverse()[1]);
+else console.log(0);
