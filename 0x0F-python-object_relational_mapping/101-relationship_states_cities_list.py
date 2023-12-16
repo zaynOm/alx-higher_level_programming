@@ -14,7 +14,8 @@ if __name__ == '__main__':
 
     with Session(engine) as session:
         data = session.query(State).join(City).all()
-        for state in data:
-            print(f'{state.id}: {state.name}')
-            for city in state.cities:
-                print(f'\t{city.id}: {city.name}')
+        if data:
+            for state in data:
+                print(f'{state.id}: {state.name}')
+                for city in state.cities:
+                    print(f'\t{city.id}: {city.name}')
