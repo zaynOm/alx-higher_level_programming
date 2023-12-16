@@ -15,8 +15,7 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     with Session(engine) as session:
         data = session.query(State).outerjoin(City).all()
-        if data:
-            for state in data:
-                print(f'{state.id}: {state.name}')
-                for city in state.cities:
-                    print(f'\t{city.id}: {city.name}')
+        for state in data:
+            print(f'{state.id}: {state.name}')
+            for city in state.cities:
+                print(f'\t{city.id}: {city.name}')
