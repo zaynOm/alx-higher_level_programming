@@ -4,13 +4,14 @@ import requests
 from sys import argv
 
 if __name__ == '__main__':
+    data = {}
     if len(argv) == 2:
         data = {'q': argv[1]}
-        res = requests.post('http://0.0.0.0:5000/search_user', data=data)
-        try:
-            json = res.json()
-            print(f'[{json.get("id")}] {json.get("name")}')
-        except requests.exceptions.JSONDecodeError:
-            print('Not a valid JSON')
-        if not json:
-            print('No result')
+    res = requests.post('http://0.0.0.0:5000/search_user', data=data)
+    try:
+        json = res.json()
+        print(f'[{json.get("id")}] {json.get("name")}')
+    except requests.exceptions.JSONDecodeError:
+        print('Not a valid JSON')
+    if not json:
+        print('No result')
