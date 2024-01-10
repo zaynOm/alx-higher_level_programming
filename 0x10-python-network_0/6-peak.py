@@ -3,17 +3,25 @@
 
 
 def find_peak(list_of_integers):
-    "find peak function"
-    if len(list_of_integers) == 1:
+    """finds a peak in a list of unsorted integers.
+
+    Args:
+        list_of_integers (list): List of unsorted integers.
+
+    Rerurns:
+        int/None: The peak number, None if peak was not found
+    """
+
+    if not list_of_integers:
         return 0
-    for idx, e in enumerate(list_of_integers):
-        # check the first element in the list
-        if idx == 0 and e >= list_of_integers[idx + 1]:
-            return e
-        # check the last element in the list
-        if idx == len(list_of_integers) - 1 and list_of_integers[idx - 1] <= e:
-            return e
-        # check for element inside the list
-        if list_of_integers[idx - 1] <= e and e >= list_of_integers[idx + 1]:
-            return e
-    return None
+
+    l, r = 0, len(list_of_integers) - 1
+
+    while l <= r:
+        m = (l + r) // 2
+        
+        if list_of_integers[m] > list_of_integers[m + 1]:
+            r = m
+        else:
+            l = m + 1
+    return list_of_integers[l]
