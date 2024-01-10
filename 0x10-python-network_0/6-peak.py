@@ -13,13 +13,13 @@ def find_peak(list_of_integers):
     """
 
     if not list_of_integers:
-        return 0
+        return None
 
     l, r = 0, len(list_of_integers) - 1
 
-    while l <= r:
+    while l < r:
         m = (l + r) // 2
-        
+
         if list_of_integers[m] > list_of_integers[m + 1]:
             r = m
         else:
