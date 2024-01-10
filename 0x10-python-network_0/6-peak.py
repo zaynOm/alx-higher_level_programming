@@ -3,6 +3,7 @@
 
 
 def find_peak(list_of_integers):
+    "find peak function"
     if len(nums) == 1:
         return 0
     for idx, e in enumerate(list_of_integers):
