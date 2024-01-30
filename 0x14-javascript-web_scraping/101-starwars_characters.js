@@ -11,7 +11,7 @@ request(url, (err, _, body) => {
     request(charUrl, async (err, _, body) => {
       if (err) throw err;
       const person = await JSON.parse(body);
-      console.log(person.name);
+      console.log(await person.name);
     });
   }
 });
