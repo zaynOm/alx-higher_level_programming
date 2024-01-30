@@ -8,9 +8,9 @@ request(url, (err, _, body) => {
   if (err) throw err;
   const characters = JSON.parse(body).characters;
   for (const charUrl of characters) {
-    request(charUrl, (err, _, body) => {
+    request(charUrl, async (err, _, body) => {
       if (err) throw err;
-      const person = JSON.parse(body);
+      const person = await JSON.parse(body);
       console.log(person.name);
     });
   }
