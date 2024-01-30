@@ -1,10 +1,15 @@
 #!/usr/bin/node
-const { argv } = require('process')
-const request = require('request')
+const { argv } = require("process");
+const request = require("request");
 
 request(argv[2], (err, res, body) => {
-  // TODO: fix this to quit after loging the error
-  if (err) console.log(err);
-  data = JSON.parse(body).results;
-  console.log(data);
+  if (err) return console.log(err);
+  const data = JSON.parse(body).results;
+  let count = 0;
+  for (const film of data) {
+    for (const character of film.characters) {
+      if (/.*\/18\//g.test(character)) count++;
+    }
+  }
+  console.log(count);
 });
