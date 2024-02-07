@@ -1,8 +1,8 @@
 const url = 'https://hellosalut.stefanbohacek.dev/';
-$( () => {
-  function hello() {
-    lang_code = $('#language_code').val();
-    $.getJSON(url, {'lang': lang_code}, (data) => {
+$(() => {
+  function hello () {
+    langCode = $('#language_code').val();
+    $.getJSON(url, { lang: langCode }, (data) => {
       $('#hello').text(data.hello);
     });
   }
