@@ -1,7 +1,7 @@
 const url = 'https://hellosalut.stefanbohacek.dev/';
 $(() => {
   function hello () {
-    langCode = $('#language_code').val();
+    const langCode = $('#language_code').val();
     $.getJSON(url, { lang: langCode }, (data) => {
       $('#hello').text(data.hello);
     });
@@ -12,7 +12,8 @@ $(() => {
   });
 
   $('#language_code').on('keypress', (e) => {
-    if (e.which === 13)
+    if (e.which === 13) {
       hello();
+    }
   });
 });
